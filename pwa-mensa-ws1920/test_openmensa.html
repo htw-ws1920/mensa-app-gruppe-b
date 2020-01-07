@@ -1,13 +1,16 @@
 <html>
     <body>
         <button onclick="GetData()">Let's Go</button>
-        <p id="test"></p>
+        <p id="id"></p> 
+        <p id= "name"></p> 
+        <p id = "prices"></p>
+        <p id = "notes"></p>
 
         <script>
         
         function GetData() {
 
-            fetch('https://openmensa.org/api/v2/canteens/30/days/2020-01-11',
+            fetch('https://openmensa.org/api/v2/canteens/30/days/2020-01-07/meals/4785807',
             {
             method: 'get',
             headers: {
@@ -29,8 +32,15 @@
                 }
                 )
                 .then( myJson =>
-                {
-                   document.getElementById("test").innerHTML = JSON.stringify( myJson ) ;
+                { 
+
+                   document.getElementById("id").innerHTML = "ID: " + JSON.stringify( myJson.id );
+                   document.getElementById("name").innerHTML = "name: " + JSON.stringify( myJson.name );
+                   document.getElementById("prices").innerHTML = "prices: " + JSON.stringify( myJson.prices );
+                   document.getElementById("notes").innerHTML = "notes: " + JSON.stringify( myJson.notes );
+
+
+
                 } )
                 .catch( err =>
                 {

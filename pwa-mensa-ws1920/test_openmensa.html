@@ -6,27 +6,30 @@
         <button onclick = "getDate()">heute</button>
         <button onclick="increaseDate()">nächter Tag</button>
         <button onclick="decreaseDate()">vorheriger Tag</button>
+        <button onclick="nextWeek()">nächste Woche</button>
         <p id = "date"></p>
 
         <script>
-            var currentDate = new Date();            
+            var currentDate = new Date(); 
+
+            function nextWeek() {
+                currentDate.setDate(currentDate.getDate()+7)
+                document.getElementById("date").innerHTML = currentDate;
+            }
 
             function increaseDate() {
                 currentDate.setDate(currentDate.getDate()+1)
                 document.getElementById("date").innerHTML = currentDate;
             }
-
             function getDate() {
                
                 currentDate = new Date();
                 document.getElementById("date").innerHTML = currentDate;
             }
-
             function decreaseDate() {
                 currentDate.setDate(currentDate.getDate()-1)
                 document.getElementById("date").innerHTML = currentDate;
             }
-
             function showData() {
                 GetData().then(response =>
                 {
@@ -39,7 +42,6 @@
             }
             
             function GetData() {
-
                 return fetch('https://openmensa.org/api/v2/canteens/',
                 {
                 method: 'get',

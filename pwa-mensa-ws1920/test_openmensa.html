@@ -1,52 +1,63 @@
 <html>
     <body>
-        <button onclick="GetData()">Let's Go</button>
-        <p id="id"></p> 
-        <p id= "name"></p> 
-        <p id = "prices"></p>
-        <p id = "notes"></p>
+        
+        <button onclick="showData()">Let's Go</button>
+        <br>
+        <button onclick = "getDate()">heute</button>
+        <p id = "date"></p>
 
         <script>
-        
-        function GetData() {
+            var currentDate = new Date();
+            var i = 0;
 
-            fetch('https://openmensa.org/api/v2/canteens/30/days/2020-01-07/meals/4785807',
-            {
-            method: 'get',
-            headers: {
-                "Content-Type": "application/json; charset=utf-8"
-            },
-            mode: "cors"
-             })
-                .then( response =>
-                {
-                    if ( response.status !== 200 )
-                    {
-                        console.log( 'Looks like there was a problem. Status Code: ' +
-                            response.status );
-                        return;
-                    }
-
-                    console.log( response.headers.get( "Content-Type" ) );
-                    return response.json();
+            function getDate() {
+                var today = currentDate;
+                if(i>0){
+                    today.setDate(currentDate.getDate()+1);
+                    currentDate = today;
                 }
-                )
-                .then( myJson =>
-                { 
+                document.getElementById("date").innerHTML = today;
+                i++;
 
-                   document.getElementById("id").innerHTML = "ID: " + JSON.stringify( myJson.id );
-                   document.getElementById("name").innerHTML = "name: " + JSON.stringify( myJson.name );
-                   document.getElementById("prices").innerHTML = "prices: " + JSON.stringify( myJson.prices );
-                   document.getElementById("notes").innerHTML = "notes: " + JSON.stringify( myJson.notes );
+            }
 
-
-
-                } )
-                .catch( err =>
+            function showData() {
+                GetData().then(response =>
                 {
-                    console.log( 'Fetch Error :-S', err );
-                } );
-}
+                    response = response.filter(entry =>
+                    {
+                        return entry.city === "Berlin";
+                    })
+                    console.log(response);
+                })
+            }
+            
+            function GetData() {
+
+                return fetch('https://openmensa.org/api/v2/canteens/',
+                {
+                method: 'get',
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                mode: "cors"
+                })
+                    .then( response =>
+                    {
+                        if ( response.status !== 200 )
+                        {
+                            console.log( 'Looks like there was a problem. Status Code: ' +
+                                response.status );
+                            return;
+                        }
+                        return response.json();
+                    }
+                    )                
+                    .catch( err =>
+                    {
+                        console.log( 'Fetch Error :-S', err );
+                    } );
+    }
         </script>
     </body>
 </html>

@@ -4,21 +4,27 @@
         <button onclick="showData()">Let's Go</button>
         <br>
         <button onclick = "getDate()">heute</button>
+        <button onclick="increaseDate()">nächter Tag</button>
+        <button onclick="decreaseDate()">vorheriger Tag</button>
         <p id = "date"></p>
 
         <script>
-            var currentDate = new Date();
-            var i = 0;
+            var currentDate = new Date();            
+
+            function increaseDate() {
+                currentDate.setDate(currentDate.getDate()+1)
+                document.getElementById("date").innerHTML = currentDate;
+            }
 
             function getDate() {
-                var today = currentDate;
-                if(i>0){
-                    today.setDate(currentDate.getDate()+1);
-                    currentDate = today;
-                }
-                document.getElementById("date").innerHTML = today;
-                i++;
+               
+                currentDate = new Date();
+                document.getElementById("date").innerHTML = currentDate;
+            }
 
+            function decreaseDate() {
+                currentDate.setDate(currentDate.getDate()-1)
+                document.getElementById("date").innerHTML = currentDate;
             }
 
             function showData() {

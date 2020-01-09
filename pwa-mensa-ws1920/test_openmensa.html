@@ -7,11 +7,36 @@
         <button onclick="increaseDate()">nächter Tag</button>
         <button onclick="decreaseDate()">vorheriger Tag</button>
         <button onclick="nextWeek()">nächste Woche</button>
+        <br>
+        <button onclick="getPosition()">wo bin ich?</button>
         <p id = "date"></p>
+        <p id="position"></p>
+        <div id="near"></div>
         <div id="meals"></div>
+        
+        
 
         <script>
-            var currentDate = new Date();            
+            var currentDate = new Date();    
+
+            function getPosition(){
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    document.getElementById("position").innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }       
+
+            function showPosition(position) {
+                document.getElementById("position").innerHTML = "Latitude: " + position.coords.latitude + 
+                    "<br>Longitude: " + position.coords.longitude;
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                getNearCanteens(lat,lng).then(response=>
+                {
+                    document.getElementById("near").innerHTML = JSON.stringify(response);
+                })
+            }
 
             function nextWeek() {
 
@@ -131,6 +156,33 @@
                         console.log( 'Fetch Error :-S', err );
                     } );
             }
+            function getNearCanteens(lat, lng){
+                var adress = 'https://openmensa.org/api/v2/canteens?near[lat]=' + lat +'&near[lng]=' + lng + '&near[dist]=5';
+                return fetch(adress,
+                {
+                method: 'get',
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                mode: "cors"
+                })
+                    .then( response =>
+                    {
+                        if ( response.status !== 200 )
+                        {
+                            console.log( 'Looks like there was a problem. Status Code: ' +
+                                response.status );
+                            return;
+                        }
+                        return response.json();
+                    }
+                    )                
+                    .catch( err =>
+                    {
+                        console.log( 'Fetch Error :-S', err );
+                    } );
+            }
+            
         </script>
     </body>
 </html>

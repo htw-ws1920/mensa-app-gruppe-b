@@ -1,0 +1,69 @@
+<html>
+    <body>
+        
+        <button onclick="showData()">Let's Go</button>
+        <br>
+        <button onclick = "getDate()">heute</button>
+        <button onclick="increaseDate()">nächter Tag</button>
+        <button onclick="decreaseDate()">vorheriger Tag</button>
+        <p id = "date"></p>
+
+        <script>
+            var currentDate = new Date();            
+
+            function increaseDate() {
+                currentDate.setDate(currentDate.getDate()+1)
+                document.getElementById("date").innerHTML = currentDate;
+            }
+
+            function getDate() {
+               
+                currentDate = new Date();
+                document.getElementById("date").innerHTML = currentDate;
+            }
+
+            function decreaseDate() {
+                currentDate.setDate(currentDate.getDate()-1)
+                document.getElementById("date").innerHTML = currentDate;
+            }
+
+            function showData() {
+                GetData().then(response =>
+                {
+                    response = response.filter(entry =>
+                    {
+                        return entry.city === "Berlin";
+                    })
+                    console.log(response);
+                })
+            }
+            
+            function GetData() {
+
+                return fetch('https://openmensa.org/api/v2/canteens/',
+                {
+                method: 'get',
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                mode: "cors"
+                })
+                    .then( response =>
+                    {
+                        if ( response.status !== 200 )
+                        {
+                            console.log( 'Looks like there was a problem. Status Code: ' +
+                                response.status );
+                            return;
+                        }
+                        return response.json();
+                    }
+                    )                
+                    .catch( err =>
+                    {
+                        console.log( 'Fetch Error :-S', err );
+                    } );
+    }
+        </script>
+    </body>
+</html>

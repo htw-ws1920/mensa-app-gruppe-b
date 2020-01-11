@@ -1,0 +1,381 @@
+/* colours */
+:root{
+  --primary: #597481;
+  --secondary: #FFE1C4;
+  --uppernavbar: #C8C8C8;
+  --textMensaAuswahl: #FCF5EA;
+  --boxColor: #DCDCDC;
+  --text: #131313;
+  --highlight: #F9AA33;
+  --day: #E2E1E1;
+}
+
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('/img/background.png');
+}
+
+select{
+  display: block;
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: 635; 
+  font-size: small;
+  color: var(--text);
+}
+
+/* top navigation bar */
+.top-navbar{
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  height: 15%;
+  width: 100%;
+  display: flex;
+  background: rgba(0,0,0,0);
+}
+.top-navbar #textfarbe{
+  color: var(--uppernavbar);
+}
+.top-navbar #logo{
+  float: left;
+  position: relative;
+  margin-top: 8;
+  left: 6%;
+  width: 20%;
+  padding: 30px 0px;
+  font-size: 10px 0;
+  color: var(--uppernavbar);
+}
+.top-navbar #logo:hover{
+  opacity: 0.5;
+}
+
+.top-navbar #canteen-info{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  color: var(--uppernavbar);
+}
+.top-navbar #calendar{
+  float: right;
+  text-align: center;
+  width: 20%;
+  padding: 40px 0px;
+  font-size: 10px 0;
+  color: var(--uppernavbar);
+}
+.top-navbar a:hover{
+  opacity: 0.5;
+}
+.top-navbar b{
+  color: var(--highlight);
+}
+
+/* bottom navigation bar */
+.bottom-navbar{
+  position: fixed;
+  bottom: 0;
+  height: 8%;
+  width: 100%;
+  background: var(--primary);
+}
+.bottom-navbar a{
+  float: left;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px 0px;
+  width: 20%;
+  color: var(--uppernavbar);
+}
+.bottom-navbar #active{
+  color: var(--highlight);
+}
+.bottom-navbar a:hover{
+  opacity: 0.5;
+}
+
+/* canteen selection */
+.container{
+  font-weight: 600; 
+  margin-top: 240px;
+  color: var(--boxColor);
+}
+.canteen a{
+  display: flex;
+  text-align: center; 
+  font-weight: 650; 
+  margin-top: 10px;
+  padding-right: 60;
+  line-height: 2.1em;
+  width: 21%;
+  height: 4%;
+  background-color: var(--boxColor);
+  color: var(--text);
+}
+.canteen a:hover{
+  background-color: var(--boxColor);
+}
+.canteen span{
+  color: var(--uppernavbar);
+}
+h6{
+  font-family: Segoe UI;
+  font-style: normal;
+  font-variant: normal; 
+  font-size: 20px; 
+  font-weight: 600; 
+  line-height: 26.4px;
+  color: var(--textMensaAuswahl);
+}
+
+/* menu */
+.meals-headline{
+  display: flex;
+  margin-top: 120px;
+  margin-left: 5px;
+}
+.meals-headline #speiseplan{
+  font-family: Rockwell;
+  font-size: 25px;
+  margin-left: 15px;
+  color: var(--textMensaAuswahl);
+}
+.meals-headline #prev-day{
+  margin-top: 8px;
+  margin-left: 5px;
+  color: var(--textMensaAuswahl);
+}
+.meals-headline #prev-day:hover{
+  opacity: 0.5;
+}
+.meals-headline #next-day{
+  display: flex;
+  margin-top: 8px;
+  margin-left: -2.5px;
+  color: var(--textMensaAuswahl);
+}
+.meals-headline #next-day:hover{
+  opacity: 0.5;
+}
+.meals-headline #filter{
+  margin-top: 6px;
+  margin-left: 146px;
+  color: var(--textMensaAuswahl);
+}
+.meals-headline #filter:hover{
+  opacity: 0.5;
+}
+.meals-headline #download{
+  margin-top: 6px;
+  margin-left: 3px;
+  color: var(--textMensaAuswahl);
+}
+.meals-headline #download:hover{
+  opacity: 0.5;
+}
+.meals-headline #date{
+  position: absolute;
+  display: flex;
+  padding-top: 20px;
+  margin-left: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-family: "Rockwell";
+  font-size: medium;
+  font-weight: 50%;
+  color: var(--uppernavbar);
+}
+.meals-headline #prev-day{
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+.meals-headline #next-day{
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+/* meals */
+.meals{
+  margin-top: 10px;
+}
+.card-panel.meal{
+  display: flex;
+  margin-top: 30px;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: rgba(155, 155, 155, 0.801);
+  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+}
+#meal-category{
+  color: var(--uppernavbar);
+  font-weight: bold;
+}
+#meal-title{
+  color: var(--uppernavbar);
+  font-size: 0.8em;
+  font-weight: bold;
+}
+#meal-price{
+  color: var(--uppernavbar);
+  font-size: 0.8em;
+}
+.meal img{
+  grid-area: image;
+  max-width: 60px;
+}
+.meal-details{
+  grid-area: details;
+  margin-top: 6px;
+}
+
+/* search-box */
+.search-box{
+  position: absolute;
+  display: flex;
+  width: 90%;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  border-radius: 40px;
+  padding: 0px 0px;
+  background-color: var(--primary);
+}
+.input-box {
+  position: relative;
+  float: left;
+  left: 10px;
+  padding: 20px;
+  line-height: 40px;
+  width: 0px;
+  color: white;
+}
+.search-box #search-icon{
+  float: right;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.btn i{
+  position: relative;
+  right: 50%;
+}
+
+/* favs, notifications, profile */
+.headline{
+  display: flex;
+  margin-top: 120px;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.headline a{
+  display: flex;
+  margin-right: 5px;
+  font-family: Rockwell;
+  font-size: 25px;
+  line-height: 1.6em;
+  color: var(--textMensaAuswahl);
+}
+.headline i{
+  display: flex;
+  line-height: 1.45em;
+  color: var(--highlight);
+  padding-right: 5px;
+}
+
+/* profile */
+#recharge-credit{
+  display: flex;
+  font-weight: 500;
+  color: var(--uppernavbar);
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 20px;
+  width: 80%;
+  left: 10%;
+  height: 30px;
+  background: rgba(143, 139, 139, 0.829);
+}
+#recharge-credit i{
+  display: flex;
+  left: 2%;
+}
+
+#noti-settings{
+  display: flex;
+  font-weight: 500;
+  color: var(--uppernavbar);
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  margin-top: 65px;
+  border-radius: 20px;
+  width: 80%;
+  left: 10%;
+  height: 30px;
+  background: rgba(143, 139, 139, 0.829);
+}
+#noti-settings i{
+  display: flex;
+  left: 2%;
+}
+
+#change-language{
+  display: flex;
+  font-weight: 500;
+  color: var(--uppernavbar);
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  margin-top: 110px;
+  border-radius: 20px;
+  width: 80%;
+  left: 10%;
+  height: 30px;
+  background: rgba(143, 139, 139, 0.829);
+}
+#change-language i{
+  display: flex;
+  left: 2%;
+}
+
+/* feedback */
+.feedback{
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+  align-items: right;
+  margin-top: 465px;
+  margin-left: 305px;
+}
+.feedback a{
+  display: flex;
+  font-weight: 500;
+  color: rgba(255, 166, 0, 0.74);
+}
+.feedback a:hover{
+  opacity: 0.5;
+}
+.feedback i{
+  padding-left: 5px;
+}

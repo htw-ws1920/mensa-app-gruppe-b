@@ -78,7 +78,6 @@ select{
 
 /* bottom navigation bar */
 .bottom-navbar{
-  overflow: auto;
   position: fixed;
   bottom: 0;
   height: 8%;
@@ -179,6 +178,34 @@ h6{
 .meals-headline #download:hover{
   opacity: 0.5;
 }
+.meals-headline #date{
+  position: absolute;
+  display: flex;
+  padding-top: 20px;
+  margin-left: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-family: "Rockwell";
+  font-size: medium;
+  font-weight: 50%;
+  color: var(--uppernavbar);
+}
+.meals-headline #prev-day{
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+.meals-headline #next-day{
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
 
 /* meals */
 .meals{
@@ -186,6 +213,7 @@ h6{
 }
 .card-panel.meal{
   display: flex;
+  margin-top: 30px;
   border-radius: 8px;
   padding: 10px;
   background-color: rgba(155, 155, 155, 0.801);

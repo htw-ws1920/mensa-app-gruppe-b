@@ -1,11 +1,4 @@
- /* date formatting */
  const currentDate = new Date();
- const formattedDate = currentDate.toLocaleDateString('de-DE', {
-   weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
- }).replace(/ /g, ' ');
- 
- document.getElementById("date").innerHTML = formattedDate;
-
  function increaseDate() {
      currentDate.setDate(currentDate.getDate()+1)
      const formattedDate = currentDate.toLocaleDateString('de-DE', {
@@ -35,7 +28,7 @@
  }
 
  function getDate() {
-     currentDate = new Date();
+     
      const formattedDate = currentDate.toLocaleDateString('de-DE', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
       }).replace(/ /g, ' ');
@@ -48,23 +41,105 @@
     })
  }
 
- /* display meals 
-         document.getElementById("meal-title").innerHTML += JSON.stringify(obj.name) + "<br>"
-        document.getElementById("meal-price").innerHTML += JSON.stringify(obj.prices) + "<br>"*/
-        /*document.getElementById("meal-title").innerHTML = "Gericht" + "<br>";
-        document.getElementById("meal-category").innerHTML += JSON.stringify(obj.category) + "<br>"
-        
-            console.log(JSON.stringify(obj.category));
-            console.log(category);*/
  function showMeals(response) {
-    var category = new Set(); 
-    
+ 
+    while (document.getElementById("meals-box").firstChild) {
+        document.getElementById("meals-box").removeChild(document.getElementById("meals-box").firstChild);
+    }
+
+    var category = response[0].category
+    var output = JSON.stringify(category);
+
+    var para = document.createElement("P");
+    para.innerHTML = output.replace(/^"(.*)"$/, '$1');
+    para.id= "meal-category"
+    document.getElementById("meals-box").appendChild(para);
+
+    for (var iter =0; iter<response.length;iter++){
+        var object = response[iter];
+        if(object.category == category){
+            var output =JSON.stringify(object.name)
+            var para = document.createElement("P");
+            para.innerHTML = output.replace(/^"(.*)"$/, '$1');
+            para.id= "meal-title"
+            document.getElementById("meals-box").appendChild(para);
+
+            var price = "";
+            if(object.prices.students != null){
+                price += JSON.stringify(object.prices.students);
+
+                if(object.prices.employees != null){
+                    price += "/"+ JSON.stringify(object.prices.employees);
+                    if(object.prices.pupils != null){
+                        price += "/" + JSON.stringify(object.prices.pupils);
+
+                    }
+                    if(object.prices.others !=null){
+
+                        price += "/" + JSON.stringify(object.prices.others);
+                        
+                    }
+                }
+            } else{
+                price += "0";
+            }
+        
+            
+            
+            var priceP = document.createElement("P");
+            priceP.innerHTML = price;
+            priceP.id = "meal-price";
+            document.getElementById("meals-box" ) .appendChild(priceP);
+        }
+    }
+
     for(var i = 0; i < response.length; i++) {
         var obj = response[i];
         
-        if(!(category.has(JSON.stringify(obj.category)))){
-            category.add(obj.category);
-            console.log(category)
+        if (category != obj.category){
+            var output =JSON.stringify(obj.category)
+            var para = document.createElement("P");
+            para.innerHTML = output.replace(/^"(.*)"$/, '$1');
+            para.id= "meal-category"
+            document.getElementById("meals-box").appendChild(para);
+            category = obj.category;
+            
+            for (var iter =0; iter<response.length;iter++){
+                var object = response[iter];
+                if(object.category == category){
+                    var output =JSON.stringify(object.name)
+                    var para = document.createElement("P");
+                    para.innerHTML = output.replace(/^"(.*)"$/, '$1');
+                    para.id= "meal-title"
+                    document.getElementById("meals-box").appendChild(para);
+
+
+                    var price = "";
+                    if(object.prices.students != null){
+                        price += JSON.stringify(object.prices.students);
+        
+                        if(object.prices.employees != null){
+                            price += "/"+ JSON.stringify(object.prices.employees);
+                            if(object.prices.pupils != null){
+                                price += "/" + JSON.stringify(object.prices.pupils);
+        
+                            }
+                            if(object.prices.others !=null){
+        
+                                price += "/" + JSON.stringify(object.prices.others);
+                                
+                            }
+                        }
+                    } else{
+                        price += "0";
+                    }
+
+                    var priceP = document.createElement("P");
+                    priceP.innerHTML = price;
+                    priceP.id = "meal-price";
+                    document.getElementById("meals-box" ) .appendChild(priceP);
+                }
+            }
         }
     }
 }

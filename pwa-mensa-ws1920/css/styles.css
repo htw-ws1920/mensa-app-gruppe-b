@@ -212,7 +212,7 @@ h6{
   margin-top: 10px;
 }
 .card-panel.meal{
-  
+  /* HIER display: flex rausgenommen */
   margin-top: 30px;
   border-radius: 8px;
   padding: 10px;
@@ -222,6 +222,7 @@ h6{
 #meal-category{
   color: var(--uppernavbar);
   font-weight: bold;
+  /* hier font-size erhöht */
   font-size: 1.2em;
   
 }

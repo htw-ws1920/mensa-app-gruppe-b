@@ -1,4 +1,6 @@
- const currentDate = new Date();
+//HIER 
+const currentDate = new Date();
+//HIER AUCH
  function increaseDate() {
      currentDate.setDate(currentDate.getDate()+1)
      const formattedDate = currentDate.toLocaleDateString('de-DE', {
@@ -12,7 +14,7 @@
         showMeals(response);
     })
  }
-
+//HIER AUCH
  function decreaseDate() {
      currentDate.setDate(currentDate.getDate()-1)
      const formattedDate = currentDate.toLocaleDateString('de-DE', {
@@ -26,7 +28,7 @@
         showMeals(response);
     })
  }
-
+//HIER AUCH
  function getDate() {
      
      const formattedDate = currentDate.toLocaleDateString('de-DE', {
@@ -41,6 +43,7 @@
     })
  }
 
+//HIER AUCH
  function showMeals(response) {
  
     while (document.getElementById("meals-box").firstChild) {

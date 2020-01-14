@@ -11,7 +11,7 @@
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <link rel="manifest" href="/manifest.json">
 </head>
-<body class="grey lighten-4">
+<body onload="showFavorites()" class="grey lighten-4">
 
   <!-- top navbar -->
   <div class="top-navbar">
@@ -31,7 +31,7 @@
   </div>
 
   <!-- content -->
-  <div class="headline">
+  <div id = "favorites-div" class="headline">
     <a href="/pages/favorites.html"><i class="small material-icons">grade</i>Lieblingsspeisen</a>
   </div>
   
@@ -61,6 +61,7 @@
     const db = firebase.firestore();
   </script>
 
+  <script src="/js/cookies.js"></script>
   <script src="/js/app.js"></script>
   <script src="/js/db-canteen-info.js"></script>
   <script src="/js/ui.js"></script>

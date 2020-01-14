@@ -11,7 +11,6 @@
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <link rel="manifest" href="/manifest.json">
 </head>
-  <!-- Hier onload eingefügt -->
 <body onload="getDate()" class="grey lighten-4">
 
   <!-- top navbar -->
@@ -40,11 +39,11 @@
     <a id="filter" href="#"><i class="material-icons">tune</i></a>
     <a id="download" href="#"><i class="material-icons">file_download</i></a>
   </div>
-<!-- HIER die <a> rausgelöscht -->
+
   <div class="meals container">
     <div id="meals-box" class="card-panel meal">
     </div>
-  </div>
+  </div> 
  
   <!--<div id="meals"></div>-->
 
@@ -79,5 +78,5 @@
   <script src="/js/db-canteen-info.js"></script>
   <script src="/js/ui.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</body>
+</bodyonload="getDate()">
 </html>

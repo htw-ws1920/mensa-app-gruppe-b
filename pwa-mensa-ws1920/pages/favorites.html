@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Eat App</title>
+  <!-- materialize icons, css & js -->
+  <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" href="/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body onload="showFavorites()" class="grey lighten-4">
+
+  <!-- top navbar -->
+  <div class="top-navbar">
+    <a id="logo" href="/pages/dashboard.html" class="brand-logo"><img src="/img/logo_no_font.png" width="25" height="30"></a>
+    <div id="canteen-info">
+    </div>
+    <a id="calendar" href="#"><i class="material-icons">today</i></a>
+  </div>
+
+  <!-- bottom navbar -->
+  <div class="bottom-navbar">
+    <a href="/pages/dashboard.html"><i class="material-icons">dashboard</i></a>
+    <a href="/pages/search.html"><i class="material-icons">search</i></a>
+    <a id="active" href="/pages/favorites.html"><i class="material-icons">grade</i></a>
+    <a href="/pages/notifications.html"><i class="material-icons">notifications</i></a>
+    <a href="/pages/profile.html"><i class="material-icons">person</i></a>
+  </div>
+
+  <!-- content -->
+  <div id = "favorites-div" class="headline">
+    <a href="/pages/favorites.html"><i class="small material-icons">grade</i>Favoriten</a>
+    <div id="favs-box" class="card-panel fav"></div>
+  </div>
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAOwj2f8HROjuUxMO-mhIQ-T_gHCWL6cYM",
+    authDomain: "pwa-mensa-app.firebaseapp.com",
+    databaseURL: "https://pwa-mensa-app.firebaseio.com",
+    projectId: "pwa-mensa-app",
+    storageBucket: "pwa-mensa-app.appspot.com",
+    messagingSenderId: "727750551344",
+    appId: "1:727750551344:web:9bd391ce86abed60e7caf5",
+    measurementId: "G-P27QQMBJ30"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const db = firebase.firestore();
+  </script>
+
+  <script src="/js/cookies.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/db-canteen-info.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</body>
+</html>

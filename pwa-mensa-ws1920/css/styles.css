@@ -78,6 +78,7 @@ select{
 /* bottom navigation bar */
 .bottom-navbar{
   position: fixed;
+  z-index: 999;
   bottom: 0;
   height: 8%;
   width: 100%;
@@ -288,7 +289,7 @@ h6{
   margin-top: 0px;
 }
 .meal-title{
-  display: inline-block;
+  display: inline;
 
   color: var(--uppernavbar);
   font-size: 1em;
@@ -446,7 +447,16 @@ h6{
   display: flex;
   left: 2%;
 }
+.card-panel.settings-box{
+  margin-top: 30px;
+  margin-bottom: 20%;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: rgba(155, 155, 155, 0.801);
+  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+}
 
+ 
 /* feedback */
 .feedback{
   display: flex;
@@ -461,6 +471,7 @@ h6{
   font-weight: 500;
   color: rgba(255, 166, 0, 0.74);
 }
+
 .feedback a:hover{
   opacity: 0.5;
 }
@@ -469,9 +480,15 @@ h6{
 }
 .settings-label{
   color: white;
-  display: inline-block;
+  position: relative;
+  font-size: large;
+  float: left;
+  padding-top: 5px;
+  padding-right: 10px;
 }
-.onoffswitch {
+.onoffswitch {  
+  
+  display: inline-block;
   position: relative; width: 60px;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
@@ -502,4 +519,66 @@ h6{
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
   right: 0px; 
+}
+/* Popup container - can be anything you want */
+.popup {
+  float: right;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 350px;
+  font-size: 0.7em;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  margin-left: -350px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 95%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+.meals-icon{
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-right: 5px;
 }

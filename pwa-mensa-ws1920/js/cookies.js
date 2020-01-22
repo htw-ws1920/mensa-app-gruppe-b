@@ -2,8 +2,8 @@ function showFavorites(){
     var keyValuePairs = document.cookie.split(/; */);
     for(var i = 0; i < keyValuePairs.length; i++) {
         var name = keyValuePairs[i].substring(0, keyValuePairs[i].indexOf('='));
-        
-        if(!(getCookie(name).startsWith("GA1")||getCookie(name).startsWith("GS1"))){
+        var value = keyValuePairs[i].substring(keyValuePairs[i].indexOf('=')+1);
+        if(!(getCookie(name).startsWith("GA1")||getCookie(name).startsWith("GS1"))&& !(name === "notifications")){
             var star = document.createElement("I")
             star.className ="material-icons"
             star.id = name;
@@ -25,6 +25,21 @@ function showFavorites(){
             document.getElementById("favs-box").appendChild(par)
         }
     }
+}
+function checkCookies(){
+    var element = document.getElementById("myonoffswitch");
+    
+        if(getCookie("notifications")==="off"){
+            element.checked = false;
+        }
+        else{
+            element.checked = true;
+        }
+}
+
+function setCookie(name,value) {
+    var expires = "";
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
 
 function getCookie(name) {

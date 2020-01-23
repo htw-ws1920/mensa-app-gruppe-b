@@ -1,4 +1,6 @@
+
 //shows favorites
+//checks for cookies and displays them
 function showFavorites(){
     var keyValuePairs = document.cookie.split(/; */);
     for(var i = 0; i < keyValuePairs.length; i++){
@@ -11,6 +13,7 @@ function showFavorites(){
             star.className ="material-icons"
             star.id = name;
             star.innerHTML ="star"
+            //removes cookie and lets the favorite meal fade out, and then disappear
             star.onclick = function(){
                 document.cookie = this.id +"=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
                 var par = document.getElementById("meal"+ this.id)
@@ -31,7 +34,10 @@ function showFavorites(){
     }
 }
 
-//ELIAS KOMMENTIEREN PLS
+//for notification settings page
+// is called on load in the noti-settings page 
+// checks if the "notifications" cookie is set "on" or "off"
+// if "on", it sets the toggle switch to checked and if "off" it sets it unchecked
 function checkCookies(){
     var element = document.getElementById("myonoffswitch");
     if(getCookie("notifications")==="off"){
@@ -41,11 +47,7 @@ function checkCookies(){
     }
 }
 
-function setCookie(name,value) {
-    var expires = "";
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-
+//returns the cookies value by name
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');

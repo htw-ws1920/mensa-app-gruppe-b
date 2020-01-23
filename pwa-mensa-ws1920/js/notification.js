@@ -2,7 +2,7 @@
 function notificationsChange(){
     switch(getCookie("notifications")){
         case null:
-            setCookie("notifications", "on");
+            setCookie("notifications", "off");
             console.log(document.cookie);
             break;
         case "on":
@@ -18,7 +18,6 @@ function notificationsChange(){
 }
 
 function setCookie(name,value) {
-    var expires = "";
     document.cookie = name + "=" + (value || "");
 }
 

@@ -489,7 +489,6 @@ h6{
   left: 2%;
 }
 .onoffswitch {  
-  display: inline-block;
   position: relative; 
   width: 45px;
   height: 25px;

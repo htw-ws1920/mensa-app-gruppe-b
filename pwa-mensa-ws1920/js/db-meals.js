@@ -2,6 +2,7 @@
 const currentDate = new Date();
 
 //gets current date
+// displays it and calls the functions checkForFav(), getMeals() and showMeals()
 function getDate() {
     const formattedDate = currentDate.toLocaleDateString('de-DE', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
@@ -12,11 +13,11 @@ function getDate() {
     var month = currentDate.getMonth() + 1;
     var day = currentDate.getDate();
     if (getCookie("notifications")!=="off"){
-        for(var i = 0; i < 7; i++){
-            getMeals(localStorage.getItem('id'), year, month, day + i).then(response => {
-                checkForFav(response,day);
-            })
-        }
+
+        getMeals(localStorage.getItem('id'), year, month, day).then(response => {
+            checkForFav(response);
+
+        });
     }
     getMeals(localStorage.getItem('id'), year, month, day).then(response => {
         showMeals(response);
@@ -55,8 +56,10 @@ function decreaseDate() {
     })
 }
 
-//ELIAS KOMMENTIEREN PLS
-function checkForFav(response, day){
+//iterates over the response sent from the server, 
+//and all cookies to check if a favorite meal of the user is available today or tomorrow
+// if yes it calls the function notify()
+function checkForFav(response){
     var keyValuePairs = document.cookie.split(/; */);
     for(var i = 0; i < response.length; i++){
         var object = response[i];
@@ -68,24 +71,25 @@ function checkForFav(response, day){
             output = output.replace(/^"(.*)"$/, '$1');
 
             if(output === value){
-                notify(value, day);
+                notify(value);
             }
         }
     }
 }
 
-//ELIAS KOMMENTIEREN PLS
-function notify(meal,day){
+//notifies the user about available favorite meals
+//sends a push notification 
+function notify(meal){
     if(Notification.permission !== "granted"){
         Notification.requestPermission();
     }else{
-        var notification = new Notification('Dein Essen ist verfügbar.', {
-        body: meal +  " am " + day,
+        new Notification('Dein Lieblingsessen ist heute verfügbar.', {
+        body: meal,
         })
     }
 }
 
-//ELIAS KOMMENTIEREN PLS
+//returns the cookies value by name
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -305,6 +309,7 @@ function showMeals(response) {
 }
 
 //handles notes from meals
+//displays them in a specified style
 function handleNotes(object, mainSpan){
     var notes = object.notes;
     var array = [
@@ -426,6 +431,8 @@ function handleNotes(object, mainSpan){
 }
 
 //fade out effect for notes popup
+//interval is set to 3000 and opacity is decreased by 1, 
+//so it disappears instantly and will then be removed from the span it was contained in
 function fadeOutEffect(fadeTarget) {
     var fadeEffect = setInterval(function(){
         if (!fadeTarget.style.opacity) {
@@ -433,8 +440,17 @@ function fadeOutEffect(fadeTarget) {
         }
         if (fadeTarget.style.opacity > 0) {
             fadeTarget.style.opacity -=1;
+            for(var i = 0; i < document.getElementsByClassName("popup").length; i++){
+                var popup = document.getElementsByClassName("popup")[i];
+                if(popup.contains(fadeTarget)){
+                    popup.removeChild(fadeTarget);
+                }
+            }
         } else {
             clearInterval(fadeEffect);
+            
+            
+           
         }
     }, 3000);
 }

@@ -87,6 +87,7 @@ function notify(meal){
     }
 }
 
+//https://www.w3schools.com/js/js_cookies.asp
 //returns the cookies value by name
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -100,6 +101,7 @@ function getCookie(name) {
     return null;
 }
 
+//https://stackoverflow.com/questions/57240628/how-to-make-a-button-call-a-function-that-uses-the-fetch-api
 //gets meals from openmensa
 function getMeals(canteen, year, month, day) {
     var adress = 'https://openmensa.org/api/v2/canteens/' + canteen + '/days/' + year + '-' + month + '-' + day + '/meals';
@@ -428,6 +430,7 @@ function handleNotes(object, mainSpan){
     return mainSpan;                  
 }
 
+//https://stackoverflow.com/questions/29017379/how-to-make-fadeout-effect-with-pure-javascript
 //fade out effect for notes popup
 //interval is set to 3000 and opacity is decreased by 1, 
 //so it disappears instantly and will then be removed from the span it was contained in

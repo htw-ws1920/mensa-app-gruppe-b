@@ -17,10 +17,12 @@ function notificationsChange(){
     }
 }
 
+//https://www.w3schools.com/js/js_cookies.asp
 function setCookie(name,value){
     document.cookie = name + "=" + (value || "");
 }
 
+//https://www.w3schools.com/js/js_cookies.asp
 function getCookie(name){
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');

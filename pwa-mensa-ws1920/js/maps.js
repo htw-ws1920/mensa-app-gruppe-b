@@ -27,6 +27,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: 'mapbox/streets-v11'
 }).addTo(mymap);
 
+//https://stackoverflow.com/questions/6092400/is-there-a-way-to-check-if-geolocation-has-been-declined-with-javascript
 //gets current position
 function getPosition(){
     navigator.permissions.query({ name: 'geolocation' }).then(response => {

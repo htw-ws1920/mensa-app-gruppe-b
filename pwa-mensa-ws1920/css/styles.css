@@ -309,6 +309,7 @@ h6{
   margin-top: 0px;
   margin-bottom: -12px;
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 /* popup for notes of meals */
 .popup {
   float: left;
@@ -319,6 +320,7 @@ h6{
   -ms-user-select: none;
   user-select: none;
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 .popup .popuptext {
   visibility: hidden;
   width: 350px;
@@ -333,6 +335,7 @@ h6{
   background-color: #555;
   color: #fff;
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 .popup .popuptext::after {
   content: "";
   position: absolute;
@@ -344,15 +347,18 @@ h6{
   border-style: solid;
   border-color: #555 transparent transparent transparent;
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 @-webkit-keyframes fadeIn {
   from {opacity: 0;} 
   to {opacity: 1;}
 }
+/* https://www.w3schools.com/howto/howto_js_popup.asp */ 
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
@@ -486,6 +492,7 @@ h6{
   display: flex;
   left: 2%;
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch {  
   position: relative; 
   width: 45px;
@@ -493,9 +500,11 @@ h6{
   float: right;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-checkbox {
   display: none;
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
   height: 25px; padding: 0; line-height: 36px;
@@ -503,6 +512,7 @@ h6{
   background-color: #FFFFFF;
   transition: background-color 0.3s ease-in;
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-label:before {
   content: "";
   display: block; width: 25px; margin: 0px;
@@ -512,12 +522,15 @@ h6{
   border: 2px solid #E3E3E3; border-radius: 36px;
   transition: all 0.3s ease-in 0s; 
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-checkbox:checked + .onoffswitch-label {
   background-color: rgb(77, 187, 75);
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
  border-color: rgb(77, 187, 75);
 }
+/* https://proto.io/freebies/onoff/ */
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
   right: 0px; 
 }

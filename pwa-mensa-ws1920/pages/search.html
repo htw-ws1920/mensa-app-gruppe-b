@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>It's Time To Eat App</title>
+  <!-- materialize icons, css & js -->
+  <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" href="/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body class="grey lighten-4">
+  
+  <!-- top navbar -->
+  <div class="top-navbar">
+    <a id="logo" href="/index.html" class="brand-logo"><img src="/img/logo_no_font.png" width="25" height="30"></a>
+    <div id="canteen-info">
+    </div>
+    <a id="calendar" href="#"><i class="material-icons">today</i></a>
+  </div>
+
+  <!-- bottom navbar -->
+  <div class="bottom-navbar">
+    <a href="/pages/dashboard.html"><i class="material-icons">dashboard</i></a>
+    <a id="active" href="/pages/search.html"><i class="material-icons">search</i></a>
+    <a href="/pages/favorites.html"><i class="material-icons">grade</i></a>
+    <a href="/pages/notifications.html"><i class="material-icons">notifications</i></a>
+    <a href="/pages/profile.html"><i class="material-icons">person</i></a>
+  </div>
+
+  <!-- content -->
+  <div class="search-box">
+    <input class="input-box" type="text" placeholder=" Suchen...">
+    <a id="search-icon" href="#" class="btn orange">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
+  <!-- optional implementation -> nothing done yet! -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAa8SM9qdj2korWeEChvEsuPkUP0TUMIno",
+    authDomain: "pwa-mensa-app-ws1920.firebaseapp.com",
+    databaseURL: "https://pwa-mensa-app-ws1920.firebaseio.com",
+    projectId: "pwa-mensa-app-ws1920",
+    storageBucket: "pwa-mensa-app-ws1920.appspot.com",
+    messagingSenderId: "39573210636",
+    appId: "1:39573210636:web:60f795b3cdc56992519029"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  </script>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/db-canteen-info.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</body>
+</html>

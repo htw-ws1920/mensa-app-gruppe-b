@@ -1,0 +1,123 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>It's Time To Eat App</title>
+  <!-- materialize icons, css & js -->
+  <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" href="/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body id ="index" onload="checkCookiesIndex()" class="grey lighten-4">
+
+  <!-- top navbar -->
+  <div class="top-navbar">
+    <a id="logo" href="/pages/about.html"><i class="material-icons"">whatshot</i></a>
+    <a id="canteen-info" href="/index.html" class="brand-logo"><img src="/img/logo_no_font.png" width="35" height="40"></a>
+    <a id="calendar" href="#"><i class="material-icons">public</i></a>
+  </div>
+
+  <!-- bottom navbar -->
+  <div class="bottom-navbar">
+    <a href="/pages/dashboard.html"><i class="material-icons">dashboard</i></a>
+    <a href="/pages/search.html"><i class="material-icons">search</i></a>
+    <a href="/pages/favorites.html"><i class="material-icons">grade</i></a>
+    <a href="/pages/notifications.html"><i class="material-icons">notifications</i></a>
+    <a href="/pages/profile.html"><i class="material-icons">person</i></a>
+  </div>
+
+  <!-- choose canteen -->
+  <div class="canteen container">
+    <h6 class="left">Wähle eine Mensa aus</h6>
+    <select id="canteen-list" onchange="setCanteen()">
+    </select> 
+    <a href="/pages/dashboard.html" class="btn waves-effect waves-orange right">
+      GO! <i class="material-icons">directions_run</i>
+    </a>
+    <form action="#">
+      <p>
+        <label>
+          <input id= "save-canteen" type="checkbox"/>
+          <span onclick="saveCanteen()">als Standard speichern</span>
+        </label>
+      </p>
+    </form>
+    <p id="or">oder</p><br>
+    <a id="geolocation-canteen" href="/pages/maps.html" class="btn">Finde die nächstliegende Mensa!</a>
+  </div>
+  
+  <script>
+    //sets the canteen
+    function setCanteen(){
+      var canteen = document.getElementById('canteen-list').value;
+      
+      if(getCookie("fav_canteen") !== null){
+        document.cookie ="fav_canteen="+ canteen;
+      }
+
+      db.collection('mensen').where('name', '==', canteen).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+          localStorage['id'] = doc.data().id;
+          localStorage['name'] = doc.data().name;
+          localStorage['address'] = doc.data().address;
+          localStorage['city'] = doc.data().city;
+          localStorage['latitude'] = doc.data().latitude;
+          localStorage['longitude'] = doc.data().longitude;
+        })
+      })
+    }
+
+    //saves a canteen as default if the checkbox is true
+    function saveCanteen(){
+      var select = document.getElementById("canteen-list");
+      var value = select.options[ select.selectedIndex ].value;
+      
+      if(document.getElementById("save-canteen").checked == false){
+        document.cookie = "fav_canteen="+ value;
+      }else{
+        document.cookie =  "fav_canteen=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      }
+    }
+
+    function getCookie(name){
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+
+      for(var i=0;i < ca.length;i++){
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAa8SM9qdj2korWeEChvEsuPkUP0TUMIno",
+    authDomain: "pwa-mensa-app-ws1920.firebaseapp.com",
+    databaseURL: "https://pwa-mensa-app-ws1920.firebaseio.com",
+    projectId: "pwa-mensa-app-ws1920",
+    storageBucket: "pwa-mensa-app-ws1920.appspot.com",
+    messagingSenderId: "39573210636",
+    appId: "1:39573210636:web:60f795b3cdc56992519029"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  </script>
+  
+  <script src="/js/app.js"></script>
+  <script src="/js/db-index.js"></script>
+  <script src="/js/cookies.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</body>
+</html>

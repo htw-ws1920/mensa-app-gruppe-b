@@ -1,4 +1,3 @@
-
 //shows favorites
 //checks for cookies and displays them
 function showFavorites(){
@@ -7,7 +6,7 @@ function showFavorites(){
         var name = keyValuePairs[i].substring(0, keyValuePairs[i].indexOf('='));
         var value = keyValuePairs[i].substring(keyValuePairs[i].indexOf('=')+1);
 
-        if(!(name === "fav_canteen")&& !(name === "notifications")){
+        if(!(name === "fav_canteen") && !(name === "notifications") && (!(getCookie(name).startsWith("GA1")||getCookie(name).startsWith("GS1")))){
             var star = document.createElement("I")
 
             star.className ="material-icons"
@@ -21,8 +20,8 @@ function showFavorites(){
                 star.innerHTML = "star_border";
                 fadeOutEffect(star)
                 fadeOutEffect(par)
-
             }
+
             var par = document.createElement("P")
 
             document.getElementById("favs-box").appendChild(star)
@@ -57,24 +56,18 @@ function checkCookiesIndex(){
         element2.checked = true;
     }
 }
-//https://www.w3schools.com/js/js_cookies.asp
 //returns the cookies value by name
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++){
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
-  }
-//https://stackoverflow.com/questions/29017379/how-to-make-fadeout-effect-with-pure-javascript
+}
+
 //fade out effect for favorite(star) icon
 function fadeOutEffect(fadeTarget) {
     var fadeEffect = setInterval(function() {
@@ -88,5 +81,4 @@ function fadeOutEffect(fadeTarget) {
             document.getElementById("favs-box").removeChild(fadeTarget)
         }
     }, 100);
-
 }

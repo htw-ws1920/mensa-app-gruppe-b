@@ -3,7 +3,7 @@ const currentDate = new Date();
 
 //gets current date
 // displays it and calls the functions checkForFav(), getMeals() and showMeals()
-function getDate() {
+function getDate(){
     const formattedDate = currentDate.toLocaleDateString('de-DE', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
     }).replace(/ /g, ' ');
@@ -13,10 +13,8 @@ function getDate() {
     var month = currentDate.getMonth() + 1;
     var day = currentDate.getDate();
     if (getCookie("notifications")!=="off"){
-
         getMeals(localStorage.getItem('id'), year, month, day).then(response => {
             checkForFav(response);
-
         });
     }
     getMeals(localStorage.getItem('id'), year, month, day).then(response => {
@@ -25,7 +23,7 @@ function getDate() {
 }
 
 //gets next days date
-function increaseDate() {
+function increaseDate(){
     currentDate.setDate(currentDate.getDate() + 1);
     const formattedDate = currentDate.toLocaleDateString('de-DE', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
@@ -41,7 +39,7 @@ function increaseDate() {
 }
 
 //gets last days date
-function decreaseDate() {
+function decreaseDate(){
     currentDate.setDate(currentDate.getDate() - 1);
     const formattedDate = currentDate.toLocaleDateString('de-DE', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
@@ -88,25 +86,20 @@ function notify(meal){
         })
     }
 }
-//https://www.w3schools.com/js/js_cookies.asp
+
 //returns the cookies value by name
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
-  }
+}
 
-//https://stackoverflow.com/questions/57240628/how-to-make-a-button-call-a-function-that-uses-the-fetch-api
 //gets meals from openmensa
 function getMeals(canteen, year, month, day) {
     var adress = 'https://openmensa.org/api/v2/canteens/' + canteen + '/days/' + year + '-' + month + '-' + day + '/meals';
@@ -432,11 +425,9 @@ function handleNotes(object, mainSpan){
         }
         document.getElementById("meals-box").appendChild(div);
     }
-    return mainSpan;               
-
+    return mainSpan;                  
 }
 
-//https://stackoverflow.com/questions/29017379/how-to-make-fadeout-effect-with-pure-javascript
 //fade out effect for notes popup
 //interval is set to 3000 and opacity is decreased by 1, 
 //so it disappears instantly and will then be removed from the span it was contained in

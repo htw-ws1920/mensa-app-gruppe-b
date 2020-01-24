@@ -1,19 +1,19 @@
-const staticCacheName = 'site-static-v5';
-const dynamicCacheName = 'site-dynamic-v5';
+const staticCacheName = 'site-static-v7';
+const dynamicCacheName = 'site-dynamic-v7';
 const assets = [
-    '/',
     '/index.html',
     '/js/app.js',
-    '/js/ui.js',
     '/js/materialize.min.js',
     '/css/styles.css',
     '/css/materialize.min.css',
     '/img/logo_no_font.png',
     '/img/background.png',
+    '/img/fry.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
     '/pages/fallback.html',
-    '/pages/about.html'
+    '/pages/about.html',
+    '/pages/profile.html'
 ];
 
 //cache size limit function

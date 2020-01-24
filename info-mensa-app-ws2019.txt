@@ -10,3 +10,17 @@ Dozenten:
 Mohammed AbuJarour - Mohammed.AbuJarour@HTW-Berlin.de
 Matthias Koslowski - Matthias.Koslowski@HTW-Berlin.de
 ____________________________________________________
+
+App ist ausgelegt für ein Pixel 2.
+Stand: 24.01.202
+Pflichtanforderungen:
+- Name und Icon: vorhanden
+- Initialisierung: vorhanden + funktioniert
+- Nutzereinstellungen: vorhanden + funktioniert
+- Mensa-Übersicht: vorhanden + funktioniert
+- Ausgewählte Mensa: vorhanden + funktioniert
+- Speiseliste und Ermittlung der Preise der Speise: vorhanden + funktioniert
+- Positionsdaten: vorhanden + funktioniert
+- Notifaications: vorhanden + funktioniert
+- Sinnvolle Fehlermeldung: vorhanden + funktioniert
+- Caching Strategien: vorhanden + funktioniert

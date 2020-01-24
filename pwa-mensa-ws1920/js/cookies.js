@@ -56,6 +56,7 @@ function checkCookiesIndex(){
         element2.checked = true;
     }
 }
+//https://www.w3schools.com/js/js_cookies.asp
 //returns the cookies value by name
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -68,6 +69,7 @@ function getCookie(name) {
     return null;
 }
 
+//https://stackoverflow.com/questions/29017379/how-to-make-fadeout-effect-with-pure-javascript
 //fade out effect for favorite(star) icon
 function fadeOutEffect(fadeTarget) {
     var fadeEffect = setInterval(function() {

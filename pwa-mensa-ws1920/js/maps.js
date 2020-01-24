@@ -27,16 +27,20 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: 'mapbox/streets-v11'
 }).addTo(mymap);
 
+//https://stackoverflow.com/questions/6092400/is-there-a-way-to-check-if-geolocation-has-been-declined-with-javascript
 //gets current position
 function getPosition(){
-    navigator.permissions.query({ name: 'geolocation' }).then(response => {
+    navigator.permissions.query({ name: 'geolocation' })
+.then(response =>{
+    console.log(response);
     if(response.state === "granted" || response.state ==="prompt"){
         navigator.geolocation.getCurrentPosition(showPosition);
     }else{ 
         //entsprechende Fehlermeldung muss noch ausgegeben werden s. function showError(error);
         showError(response.state);
     }
-    })
+})
+    
 }    
 
 //shows current location on map with marker
@@ -48,7 +52,7 @@ function showPosition(position){
 }
 
 //shows error message
-function showError(error){             
+function showError(error) {             
     switch(error) {
         case "denied":
             alert("Der Zugriff auf deinen Standort wurde abgelehnt.")

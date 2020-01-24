@@ -1,17 +1,5 @@
 const canteenList = document.querySelector('#canteen-list');
 
-//offline data
-db.enablePersistence()
-    .catch(err => {
-        if(err.code == 'failed-precondition'){
-            //probably multiple tabs open at once
-            console.log('persistence failed')
-        }else if(err.code == 'unimplemented'){
-            //lack of browser support
-            console.log('persistence is not available');
-        }
-    });
-
 //creates element and renders canteen
 function renderCanteen(doc){
     let li = document.createElement('option');
@@ -39,6 +27,7 @@ db.collection('mensen').get().then((snapshot) => {
         canteenList.appendChild(li);
     }
     snapshot.docs.forEach(doc => {
+       
         renderCanteen(doc);
     })
 })
